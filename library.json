@@ -1,6 +1,5 @@
 [
-books = {
-    "book1": {
+    {
         "title": "Fluent Python",
         "author": "Luciano Ramalho",
         "year": 2015
@@ -8,7 +7,7 @@ books = {
       "read_status":"true"
       "added_data":"2025-03-11 12:36:40"
     },
-    "book2": {
+     {
         "title": "Python Cookbook",
         "author": "David Beazley and Brian K. Jones",
         "year": 2013
@@ -16,7 +15,7 @@ books = {
       "read_status":"false"
       "added_data":"2025-02-11 9:36:50"
     },
-    "book3": {
+     {
         "title": "Automate the Boring Stuff with Python",
         "author": "Al Sweigart",
         "year": 2015
@@ -24,7 +23,7 @@ books = {
       "read_status":"false"
       "added_data":"2025-02-11 1:46:50"
     },
-    "book4": {
+     {
         "title": "Effective Python",
         "author": "Brett Slatkin",
         "year": 2015
