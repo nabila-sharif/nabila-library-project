@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 from streamlit_lottie import st_lottie  # Yeh bhi galat likha tha
 import requests
 
-#set page configuration
+# set page configuration
 st.set_page_config(
     page_title="Personal Library Management System",
     page_icon="📚",
@@ -262,7 +262,8 @@ def create_visulations(stats):
         'Decades': [f"{decade}s" for decade in stats['decades'].keys()],
         'Count': list(stats['decades'].values())
     })
-         st.markdown("<h3>Books by Decade</h3>", unsafe_allow_html=True)
+
+    st.markdown("<h3>Books by Decade</h3>", unsafe_allow_html=True)
     st.dataframe(decades_df)
 
     fig_decades = px.line(
@@ -279,7 +280,8 @@ def create_visulations(stats):
             height=400
         )
     st.plotly_chart(fig_decades, use_container_width=True)
-#load library    
+
+#load library
 load_library()
 st.sidebar.markdown("<h1 style='text-align: center;'> Navigation</h1>", unsafe_allow_html=True)
 lottie_book = load_lottieurl("https://assets9.lottiefiles.com/temp/1f20_aKAfIn.json")
@@ -410,7 +412,7 @@ elif st.session_state.current_view == "stats":
             st.metric("Books Read", stats['read_books'])
         with col3:
             st.metric("Percentage Read", f"{stats['percentage']}%")
-create_visulations()  # Assuming correct spelling
+        create_visulations()  # Assuming correct spelling
 
         if stats['authors']:
             st.markdown("<h3> Top Authors</h3>", unsafe_allow_html=True)
@@ -420,4 +422,3 @@ create_visulations()  # Assuming correct spelling
 
 st.markdown("___")
 st.markdown("Copyright © 2025 Nabila Sharif Personal Library Manager", unsafe_allow_html=True)
-
