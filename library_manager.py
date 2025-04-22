@@ -15,7 +15,7 @@ st.set_page_config(
     page_title="Personal Library Management System",
     page_icon="📚",
     layout="wide",
-    initial_sidebar_state="expended"
+    initial_sidebar_state="expanded"
 )
 
 #custom css for styling
@@ -256,27 +256,30 @@ def create_visulations(stats):
             height=400
         )
         st.plotly_chart(fig_genres, use_container_width=True)
+
     if stats['decades']:
         decades_df = pd.DataFrame({
-            'Decades':[f"{decade}s" for decade in stats['decades'].keys()],
-            'Count': list(stats['decades'].values())
-        })
-        fig_decades = px.line(
+        'Decades': [f"{decade}s" for decade in stats['decades'].keys()],
+        'Count': list(stats['decades'].values())
+    })
+         st.markdown("<h3>Books by Decade</h3>", unsafe_allow_html=True)
+    st.dataframe(decades_df)
+
+    fig_decades = px.line(
             decades_df,
             x='Decade',
             y='Count',
             markers=True,
             line_sape="spline"
         )
-        fig_genres.update_layout(
+    fig_genres.update_layout(
             title_text='Books by publication decade',
             xaxis_title='Decade',
             yaxis_title='Number of Books',
             height=400
         )
-        st.plotly_chart(fig_decades, use_container_width=True)
-
-#load library
+    st.plotly_chart(fig_decades, use_container_width=True)
+#load library    
 load_library()
 st.sidebar.markdown("<h1 style='text-align: center;'> Navigation</h1>", unsafe_allow_html=True)
 lottie_book = load_lottieurl("https://assets9.lottiefiles.com/temp/1f20_aKAfIn.json")
@@ -407,8 +410,7 @@ elif st.session_state.current_view == "stats":
             st.metric("Books Read", stats['read_books'])
         with col3:
             st.metric("Percentage Read", f"{stats['percentage']}%")
-
-        create_visulations()  # Assuming correct spelling
+create_visulations()  # Assuming correct spelling
 
         if stats['authors']:
             st.markdown("<h3> Top Authors</h3>", unsafe_allow_html=True)
