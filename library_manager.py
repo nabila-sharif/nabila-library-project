@@ -145,7 +145,7 @@ def add_book(title, author, publication_year,genre, read_status):
         'publiction_year': publication_year,
         'genre':genre,
         'read_status': read_status,
-        'added_date': datetime.now().strtime("%Y-%m-%d %H:%M:%S")
+        'added_date': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
     st.session_state.library.append(book)
     save_library()
