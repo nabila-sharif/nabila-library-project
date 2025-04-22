@@ -195,7 +195,7 @@ def get_library_state():
 
 #count author  
         if book['author'] in authors:
-             [book['author']] += 1
+             authors[book['author']] += 1
         else:
            authors[book['author']] = 1 
 
