@@ -95,7 +95,7 @@ st.markdown("""
 
 # next work 
 
-def load_lottieur(url):
+def load_lottieurl(url):
     try:
         r = requests.get(url)
         if r.status_code != 200:
