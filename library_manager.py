@@ -199,9 +199,10 @@ def get_library_stats():
  #count decades  
         decade = (book['publication_year'] // 10) * 10
         if decade in decades:
-            decades[decade] += 1
+           decades[decade] += 1
         else:
-            decades[decade] = 1
+           decades[decade] = 1
+
 
 #sort by count 
     genres = dict(sorted(genres.items(), key=lambda x: x[1], reverse=True))         
@@ -398,10 +399,10 @@ elif st.session_state.current_view == "stats":
             st.metric("Total Books", stats['total_books'])
         with col2:
             st.metric("Books Read", stats['read_books'])
-        with col3:
-            st.metric("Percentage Read", f"{stats['percentage']}%")
-
-        create_visualisations()  # Assuming correct spelling
+            with col3:
+               st.metric("Percentage Read", f"{stats['percent_read']:.1f}%")
+               
+               create_visualisations()  # Assuming correct spelling
 
         if stats['authors']:
             st.markdown("<h3> Top Authors</h3>", unsafe_allow_html=True)
