@@ -191,14 +191,12 @@ def get_library_stats():
              genres[book['genre']] += 1
         else:
             genres[book['genre']] = 1 
-
 #count author  
          if book['author'] in authors:
-             authors[book['author']] += 1
+           authors[book['author']] += 1
         else:
            authors[book['author']] = 1 
-
- #count decades  
+#count decades  
         decade = (book['publication_year'] // 10) * 10
         if decade in decades:
             decades[decade] += 1
