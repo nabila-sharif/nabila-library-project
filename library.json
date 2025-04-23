@@ -1,34 +1,34 @@
 [
-    {
-        "title": "Fluent Python",
-        "author": "Luciano Ramalho",
-        "year": 2015
-      "genre":"programming",
-      "read_status":"true",
-      "added_data":"2025-03-11 12:36:40"
-    },
-     {
-        "title": "Python Cookbook",
-        "author": "David Beazley and Brian K. Jones",
-        "year": 2013
-       "genre":"programming",
-      "read_status":"false",
-      "added_data":"2025-02-11 9:36:50"
-    },
-     {
-        "title": "Automate the Boring Stuff with Python",
-        "author": "Al Sweigart",
-        "year": 2015
-       "genre":"programming",
-      "read_status":"false",
-      "added_data":"2025-02-11 1:46:50"
-    },
-     {
-        "title": "Effective Python",
-        "author": "Brett Slatkin",
-        "year": 2015
-       "genre":"programming",
-      "read_status":"true",
-      "added_data":"2025-02-11 2:35:40"
-    }
+  {
+    "title": "Fluent Python",
+    "author": "Luciano Ramalho",
+    "publication_year": 2015,
+    "genre": "programming",
+    "read_status": true,
+    "added_date": "2025-03-11 12:36:40"
+  },
+  {
+    "title": "Python Cookbook",
+    "author": "David Beazley and Brian K. Jones",
+    "publication_year": 2013,
+    "genre": "programming",
+    "read_status": false,
+    "added_date": "2025-02-11 09:36:50"
+  },
+  {
+    "title": "Automate the Boring Stuff with Python",
+    "author": "Al Sweigart",
+    "publication_year": 2015,
+    "genre": "programming",
+    "read_status": false,
+    "added_date": "2025-02-11 01:46:50"
+  },
+  {
+    "title": "Effective Python",
+    "author": "Brett Slatkin",
+    "publication_year": 2015,
+    "genre": "programming",
+    "read_status": true,
+    "added_date": "2025-02-11 02:35:40"
+  }
 ]
