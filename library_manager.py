@@ -192,7 +192,7 @@ def get_library_stats():
         else:
             genres[book['genre']] = 1 
 #count author  
-         if book['author'] in authors:
+        if book['author'] in authors:
             authors[book['author']] += 1
         else:
             authors[book['author']] = 1 
