@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 from streamlit_lottie import st_lottie  # Yeh bhi galat likha tha
 import requests
 
-# set page configuration
+#set page configuration
 st.set_page_config(
     page_title="Personal Library Management System",
     page_icon="📚",
@@ -142,7 +142,7 @@ def add_book(title, author, publication_year,genre, read_status):
     book = {
         'title': title,
         'author': author,
-        'publiction_year': publication_year,
+        'publication_year': publication_year,
         'genre':genre,
         'read_status': read_status,
         'added_date': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -195,16 +195,16 @@ def get_library_state():
 
 #count author  
         if book['author'] in authors:
-             authors[book['author']] += 1
+             [book['author']] += 1
         else:
            authors[book['author']] = 1 
 
  #count decades  
-        decades = (book['publication_year'] // 10) * 10
-        if decades in decades:
-            decades[decades] += 1
+        decade = (book['publication_year'] // 10) * 10
+        if decade in decades:
+            decades[decade] += 1
         else:
-            decades[decades] = 1
+            decades[decade] = 1
 
 #sort by count 
     genres = dict(sorted(genres.items(), key=lambda x: x[1], reverse=True))         
@@ -220,11 +220,11 @@ def get_library_state():
         'decades' : decades
     }
 
-def create_visulations(stats):
+def create_visualisations(stats):
     if stats['total_books'] > 0:
         fig_read_status = go.Figure(data=[go.pie(
             labels=['Read' , 'Unread'],
-            values=[stats['read_book'],stats['total_books'] - stats['read_books']],
+            values=[stats['read_books'],stats['total_books'] - stats['read_books']],
             hole=.4,
             marker_colors=['#10B981', '#F87171']
         )])
@@ -256,30 +256,25 @@ def create_visulations(stats):
             height=400
         )
         st.plotly_chart(fig_genres, use_container_width=True)
-
     if stats['decades']:
         decades_df = pd.DataFrame({
-        'Decades': [f"{decade}s" for decade in stats['decades'].keys()],
-        'Count': list(stats['decades'].values())
-    })
-
-    st.markdown("<h3>Books by Decade</h3>", unsafe_allow_html=True)
-    st.dataframe(decades_df)
-
-    fig_decades = px.line(
+            'Decades':[f"{decade}s" for decade in stats['decades'].keys()],
+            'Count': list(stats['decades'].values())
+        })
+        fig_decades = px.line(
             decades_df,
             x='Decade',
             y='Count',
             markers=True,
             line_sape="spline"
         )
-    fig_genres.update_layout(
+        fig_genres.update_layout(
             title_text='Books by publication decade',
             xaxis_title='Decade',
             yaxis_title='Number of Books',
             height=400
         )
-    st.plotly_chart(fig_decades, use_container_width=True)
+        st.plotly_chart(fig_decades, use_container_width=True)
 
 #load library
 load_library()
@@ -365,12 +360,12 @@ elif st.session_state.current_view == "library":
                         st.rerun()
 
     if st.session_state.book_removed:
-        st.markdown("div class='success-message'> Book removed successfully!<//div>, unsafe_allow_html=True")
+        st.markdown("div class='success-message'> Book removed successfully!/div>", unsafe_allow_html=True)
         st.session_state.book_removed = False
     elif st.session_state.current_view == "search":
         st.markdown("<h2 class='sub header'> search books</h2>" , unsafe_allow_html=True)  
 
-        search_by = st.selectionbox("Search by:", ["Title", "Author", "Genre"])
+        search_by = st.selectbox("Search by:", ["Title", "Author", "Genre"])
         search_term = st.text_input("Enter search term:")
 
         if st.button("Search", use_container_width=False):
@@ -383,7 +378,7 @@ elif st.session_state.current_view == "library":
             if st.session_state.search_results:
                 st.markdown(f"<h3> Found {len(st.session_state.search_results)} results:</h3>", unsafe_allow_html=True)
 
-                for i, book in enumerate(st.session_state.search_result):
+                for i, book in enumerate(st.session_state.search_results):
                     st.markdown(f"""
                             <div class = 'book-card'>    
                            <h3>{book['title']}</h3>
@@ -404,7 +399,7 @@ elif st.session_state.current_view == "stats":
     if not st.session_state.library:
         st.markdown("<div class='warning-message'> Your library is empty. Add some books to see stats!</div>", unsafe_allow_html=True)
     else:
-        stats = get_library_stats()
+        stats = get_library_state()
         col1, col2, col3 = st.columns(3)
         with col1:
             st.metric("Total Books", stats['total_books'])
@@ -412,13 +407,14 @@ elif st.session_state.current_view == "stats":
             st.metric("Books Read", stats['read_books'])
         with col3:
             st.metric("Percentage Read", f"{stats['percentage']}%")
-        create_visulations()  # Assuming correct spelling
+
+        create_visualisations()  # Assuming correct spelling
 
         if stats['authors']:
             st.markdown("<h3> Top Authors</h3>", unsafe_allow_html=True)
             top_authors = dict(list(stats['authors'].items())[:5])
             for author, count in top_authors.items():
-                st.markdown(f"**{author}**: {count} book{'s' if count > 1 else ''}")
+                st.markdown(f"{author}: {count} book{'s' if count > 1 else ''}")
 
-st.markdown("___")
+st.markdown("_")
 st.markdown("Copyright © 2025 Nabila Sharif Personal Library Manager", unsafe_allow_html=True)
