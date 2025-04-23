@@ -4,7 +4,7 @@
         "author": "Luciano Ramalho",
         "year": 2015
       "genre":"programming",
-      "read_status":"true"
+      "read_status":"true",
       "added_data":"2025-03-11 12:36:40"
     },
      {
@@ -12,7 +12,7 @@
         "author": "David Beazley and Brian K. Jones",
         "year": 2013
        "genre":"programming",
-      "read_status":"false"
+      "read_status":"false",
       "added_data":"2025-02-11 9:36:50"
     },
      {
@@ -20,7 +20,7 @@
         "author": "Al Sweigart",
         "year": 2015
        "genre":"programming",
-      "read_status":"false"
+      "read_status":"false",
       "added_data":"2025-02-11 1:46:50"
     },
      {
@@ -28,7 +28,7 @@
         "author": "Brett Slatkin",
         "year": 2015
        "genre":"programming",
-      "read_status":"true"
+      "read_status":"true",
       "added_data":"2025-02-11 2:35:40"
     }
 ]
