@@ -174,11 +174,10 @@ def search_books(search_term, search_by):
             results.append(book)
         elif search_by == "Genre" and search_term in book['genre'].lower():
             results.append(book)
-
     st.session_state.search_results = results 
 
  #calculate library states
-def get_library_state():
+def get_library_stats():
     total_books = len(st.session_state.library)
     read_books = sum(1 for book in st.session_state.library if book['read status'])
     percent_read = (read_books / total_books * 100) if total_books > 0 else 0 
@@ -299,7 +298,7 @@ elif nav_options == "Library Statistics":
 
 st.markdown("<h1 class='main-header'> Personal Library Manger </h1>", unsafe_allow_html=True)
 if st.session_state.current_view == "add":
-    st.markdown("<h2 class='sub-header'> Add a new book</h2>, unsafe_allow_html=True")
+    st.markdown("<h2 class='sub-header'> Add a new book</h2>", unsafe_allow_html=True)
 
     #adding books input form 
     with st.form(key='add_book_form'):
@@ -364,15 +363,12 @@ elif st.session_state.current_view == "library":
         st.session_state.book_removed = False
     elif st.session_state.current_view == "search":
         st.markdown("<h2 class='sub header'> search books</h2>" , unsafe_allow_html=True)  
-
         search_by = st.selectbox("Search by:", ["Title", "Author", "Genre"])
         search_term = st.text_input("Enter search term:")
-
         if st.button("Search", use_container_width=False):
             if search_term:
                with st.spinner("searching..."):
                     time.sleep(0.5)
-
                     search_books(search_term, search_by)
         if hasattr(st.session_state, 'search_results'):
             if st.session_state.search_results:
@@ -399,7 +395,7 @@ elif st.session_state.current_view == "stats":
     if not st.session_state.library:
         st.markdown("<div class='warning-message'> Your library is empty. Add some books to see stats!</div>", unsafe_allow_html=True)
     else:
-        stats = get_library_state()
+        stats = get_library_stats()
         col1, col2, col3 = st.columns(3)
         with col1:
             st.metric("Total Books", stats['total_books'])
