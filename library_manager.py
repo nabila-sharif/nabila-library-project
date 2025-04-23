@@ -130,7 +130,7 @@ def load_library():
 # save library 
 def save_library():
     try:
-        with open ('library.json', 'w') as file:
+        with open ('library.json','w') as file:
             json.dump(st.session_state.library, file)
             return True
     except Exception as e:
@@ -168,9 +168,9 @@ def search_books(search_term, search_by):
     results = []
 
     for book in st.session_state.library:
-        if search_by == "Title" and search_term in book['author'].lower():
+        if search_by == "Title" and search_term in book['title'].lower():
             results.append(book)
-        elif search_by == "Author" and search_term in book['title'].lower():
+        elif search_by == "Author" and search_term in book['author'].lower():
             results.append(book)
         elif search_by == "Genre" and search_term in book['genre'].lower():
             results.append(book)
@@ -196,12 +196,12 @@ def get_library_stats():
             authors[book['author']] += 1
         else:
             authors[book['author']] = 1 
-#count decades  
-        decade = (book['publication_year'] // 10) * 10
-        if decade in decades:
-            decades[decade] += 1
+ #count decades  
+        decades = (book['publication_year'] // 10) * 10
+        if decades in decades:
+            decades[decades] += 1
         else:
-            decades[decade] = 1
+            decades[decades] = 1
 
 #sort by count 
     genres = dict(sorted(genres.items(), key=lambda x: x[1], reverse=True))         
