@@ -355,7 +355,6 @@ elif st.session_state.current_view == "library":
                         st.session_state.library[i]['read_status'] = new_status
                         save_library()
                         st.rerun()
-
     if st.session_state.book_removed:
         st.markdown("div class='success-message'> Book removed successfully!/div>", unsafe_allow_html=True)
         st.session_state.book_removed = False
