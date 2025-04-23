@@ -402,7 +402,7 @@ elif st.session_state.current_view == "stats":
             with col3:
                st.metric("Percentage Read", f"{stats['percent_read']:.1f}%")
                
-               create_visualisations()  # Assuming correct spelling
+            create_visualisations()  # Assuming correct spelling
 
         if stats['authors']:
             st.markdown("<h3> Top Authors</h3>", unsafe_allow_html=True)
