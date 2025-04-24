@@ -106,7 +106,7 @@ def load_lottieurl(url):
     
 if 'library' not in st.session_state:
     st.session_state.library = []
-if 'session_results' not in st.session_state:
+if 'search_results' not in st.session_state:
     st.session_state.search_results = []
 if 'book added' not in st.session_state:
     st.session_state.book_added = False
@@ -359,7 +359,7 @@ elif st.session_state.current_view == "library":
         st.markdown("<div class='success-message'> Book removed successfully!</div>", unsafe_allow_html=True)
         st.session_state.book_removed = False
 elif st.session_state.current_view == "search":
-    st.markdown("<h2 class='sub header'>search books</h2>" , unsafe_allow_html=True)  
+    st.markdown("<h2 class='sub-header'>search books</h2>" , unsafe_allow_html=True)  
     search_by = st.selectbox("Search by:", ["Title", "Author", "Genre"])
     search_term = st.text_input("Enter search term:")
     if st.button("Search", use_container_width=False):
