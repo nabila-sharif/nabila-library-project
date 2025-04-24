@@ -335,12 +335,12 @@ elif st.session_state.current_view == "library":
                 st.markdown(f"""<div class = 'book-card'>
                             <h3>{book['title']}</h3>
                             <p><strong>Author:</strong> {book['author']}</p>
-                             <p><strong>Publication Year:</strong> {book['publication_year']}</p>
-                              <p><strong>Genre:</strong> {book['genre']}</p>
-                              <p><span class='{"read-badge" if book["read_status"] else "unread-badge"}>{
-                                  "Read" if book["read_status"] else "Unread"
-                              }</span></p>
-                              </div>
+                            <p><strong>Publication Year:</strong> {book['publication_year']}</p>
+                            <p><strong>Genre:</strong> {book['genre']}</p>
+                            <p><span class='{"read-badge" if book["read_status"] else "unread-badge"}>{
+                                "Read" if book["read_status"] else "Unread"
+                            }</span></p>
+                            </div>
 """, unsafe_allow_html=True)
                 
                 col1,col2 = st.columns(2)
@@ -359,8 +359,7 @@ elif st.session_state.current_view == "library":
         st.markdown("<div class='success-message'> Book removed successfully!</div>", unsafe_allow_html=True)
         st.session_state.book_removed = False
 elif st.session_state.current_view == "search":
-    st.markdown("<h2 class='sub header'> search books</h2>" , unsafe_allow_html=True)  
-    
+    st.markdown("<h2 class='sub header'>search books</h2>" , unsafe_allow_html=True)  
     search_by = st.selectbox("Search by:", ["Title", "Author", "Genre"])
     search_term = st.text_input("Enter search term:")
     if st.button("Search", use_container_width=False):
@@ -393,6 +392,7 @@ elif st.session_state.current_view =="stats":
     if not st.session_state.library:
         st.markdown("<div class='warning-message'> Your library is empty. Add some books to se stats!</div>",unsafe_allow_html=True)
     else:
+        #get library statistics
         stats = get_library_stats()
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -400,7 +400,7 @@ elif st.session_state.current_view =="stats":
         with col2:
             st.metric("Books Read", stats['read_books'])
         with col3:
-            st.metric("Percentage Read", f"{stats['percentage_read']:.1f}%")
+            st.metric("Percentage Read", f"{stats['percent_read']:.1f}%")
         create_visualisations()
 
         if stats['authors']:
