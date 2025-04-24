@@ -387,8 +387,8 @@ elif st.session_state.current_view == "library":
                    elif st.session_state.current_view == "stats":
                 st.markdown("<h2 class='sub-header'> Library statistics</h2>", unsafe_allow_html=True)
 
-    if not st.session_state.library:
-        st.markdown("<div class='warning-message'> Your library is empty. Add some books to see stats!</div>", unsafe_allow_html=True)
+   if not st.session_state.library:
+        st.markdown("<div class='warning-message'> Your library is empty. Add some books to see stats!</div>",unsafe_allow_html=True)
     else:
         stats = get_library_stats()
         
@@ -399,13 +399,11 @@ elif st.session_state.current_view == "library":
             st.metric("Books Read", stats['read_books'])
         with col3:
             st.metric("Percentage Read", f"{stats['percent_read']:.1f}%")
-
         create_visualisations()
-
         if stats['authors']:
             st.markdown("<h3> Top Authors</h3>", unsafe_allow_html=True)
-            top_authors = dict(list(stats['authors'].items())[:5])
-            for author, count in top_authors.items():
+        top_authors = dict(list(stats['authors'].items())[:5])
+        for author, count in top_authors.items():
                 st.markdown(f"{author}: {count} book{'s' if count > 1 else ''}")
 st.markdown("_")
 st.markdown("Copyright © 2025 Nabila Sharif Personal Library Manager", unsafe_allow_html=True)   
