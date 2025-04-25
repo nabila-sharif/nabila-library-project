@@ -30,12 +30,12 @@ st.markdown("""
         text-shadow: 2px 2px 4px rgba(0,0,0,0.1)
     }
             
-    .sub_header {
+    .sub-header {
         font-size: 1.8rem !important;
-        color: 3B82F6;
+        color: #3B82F6;
         font-weight: 600;
         margin-top: 1rem;
-        margin-bottom:1rem;
+        margin-bottom: 1rem;
     } 
 
     .success-message {
@@ -56,12 +56,12 @@ st.markdown("""
         background-color: #F3F4F6;
         border-radius: 0.5rem;
         padding: 1rem;
-        marging-bottom: 1rem;
-        border-left: 5px solid # 3B82F6;
+        margin-bottom: 1rem;
+        border-left: 5px solid #3B82F6;
         transition: transform 0.3s ease;
     }
             
-    .book-card-hover{
+    .book-card:hover{
         transform: translateY(-5px);
         box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
     }  
@@ -77,7 +77,7 @@ st.markdown("""
            
     }
     .unread-badge {
-        background-color: #F8717;
+        background-color: #F87171;
         color: white;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
