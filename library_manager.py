@@ -232,7 +232,6 @@ def create_visualisations(stats):
             height=400
         )
         st.plotly_chart(fig_read_status, use_container_width=True)
-
         #bar chart genres
     if stats['genres']:
         genres_df = pd.DataFrame({
@@ -256,17 +255,17 @@ def create_visualisations(stats):
         st.plotly_chart(fig_genres, use_container_width=True)
     if stats['decades']:
         decades_df = pd.DataFrame({
-            'Decades':[f"{decade}s" for decade in stats['decades'].keys()],
+            'Decades': [f"{decade}s" for decade in stats['decades'].keys()],
             'Count': list(stats['decades'].values())
         })
         fig_decades = px.line(
             decades_df,
-            x='Decade',
+            x='Decades',
             y='Count',
             markers=True,
-            line_sape="spline"
+            line_shape="spline"
         )
-        fig_genres.update_layout(
+        fig_decades.update_layout(
             title_text='Books by publication decade',
             xaxis_title='Decade',
             yaxis_title='Number of Books',
